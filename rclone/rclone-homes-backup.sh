@@ -4,7 +4,7 @@ set -euo pipefail
 # Pfade auf der Synology
 CONFIG_DIR="/volume2/docker/rclone-config"
 LOG_DIR="/volume2/docker/rclone-logs"
-DATA_DIR="/volume2/docker/rclone-testdata"
+DATA_DIR="/volume2/homes"
 
 # Docker Image
 IMAGE="rclone/rclone:latest"
@@ -30,7 +30,7 @@ if ! docker run --rm --restart=no \
   -v "$LOG_DIR":/logs \
   -v "$DATA_DIR":/data \
   "$IMAGE" \
-  sync /data 	pcloud-encrypt:backup-test-crypt \
+  sync /data 	pcloud-encrypt:homes \
     --config /config/rclone/rclone.conf \
     --exclude "**/@eaDir/**" \
     --exclude "**/.@__thumb/**" \
